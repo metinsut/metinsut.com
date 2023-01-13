@@ -1,0 +1,14 @@
+---
+export interface Props {
+  className: string;
+}
+
+const { className } = Astro.props;
+---
+
+<li
+  class={`grid items-center before:content-[''] before:w-2 before:h-2 before:rounded-full ${className}`}
+  style={{ gridTemplateColumns: '16px 1fr' }}
+>
+  <slot />
+</li>
