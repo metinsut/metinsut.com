@@ -1,8 +1,7 @@
 ---
 import Bullet from '../components/Bullet.astro';
 import Layout from '../layouts/Layout.astro';
-import moli_320 from '../images/moli_320.webp';
-import moli_1024 from '../images/moli_1024.webp';
+import moli from '../images/moli.webp';
 ---
 
 <Layout title="Welcome to Astro.">
@@ -12,14 +11,11 @@ import moli_1024 from '../images/moli_1024.webp';
     <h3>I'm a software developer specializing on the frontend.</h3>
     <figure class="w-full">
       <figcaption>My son Moli.</figcaption>
-      <picture>
-        <source srcset={moli_320} media="(max-width: 720px)" />
         <img
           class="h-48 object-cover rounded max-w-sm w-full md:w-96"
-          src={moli_1024}
+          src={moli}
           alt="Mr. Moli"
         />
-      </picture>
     </figure>
     <div class="grid grid-flow-col gap-2">
       <a href="https://www.linkedin.com/in/metinsut/" target="_blank" class="underline">LinkedIn</a>
