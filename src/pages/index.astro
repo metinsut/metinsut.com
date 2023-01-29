@@ -4,18 +4,14 @@ import Layout from '../layouts/Layout.astro';
 import moli from '../images/moli.webp';
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout>
   <main class="grid gap-2 justify-items-start p-4 md:p-6">
     <h1 class="text-3xl font-semibold">Hello.</h1>
     <h2 class="text-xl font-semibold">My name is Metin Süt.</h2>
     <h3>I'm a software developer specializing on the frontend.</h3>
     <figure class="w-full">
       <figcaption>My son Moli.</figcaption>
-        <img
-          class="h-48 object-cover rounded max-w-sm w-full md:w-96"
-          src={moli}
-          alt="Mr. Moli"
-        />
+      <img class="h-48 object-cover rounded max-w-sm w-full md:w-96" src={moli} alt="Mr. Moli" />
     </figure>
     <div class="grid grid-flow-col gap-2">
       <a href="https://www.linkedin.com/in/metinsut/" target="_blank" class="underline">LinkedIn</a>
@@ -37,6 +33,5 @@ import moli from '../images/moli.webp';
         </Bullet>
       </ul>
     </div>
-    <p class="fixed right-0 bottom-0 text-xs mr-1">Powered by Astro</p>
   </main>
 </Layout>
