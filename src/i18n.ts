@@ -2,8 +2,8 @@ export type Lang = 'en' | 'tr';
 export type Page = 'home' | 'hire';
 
 export const routes: Record<Lang, Record<Page, string>> = {
-  en: { home: '/', hire: '/hire-me' },
-  tr: { home: '/tr', hire: '/tr/birlikte-calisalim' }
+  tr: { home: '/', hire: '/birlikte-calisalim' },
+  en: { home: '/en', hire: '/en/hire-me' }
 };
 
 export const contact = {

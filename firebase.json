@@ -3,6 +3,11 @@
     "public": "dist",
     "cleanUrls": true,
     "trailingSlash": false,
+    "redirects": [
+      { "source": "/tr", "destination": "/", "type": 301 },
+      { "source": "/tr/birlikte-calisalim", "destination": "/birlikte-calisalim", "type": 301 },
+      { "source": "/hire-me", "destination": "/en/hire-me", "type": 301 }
+    ],
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
   }
 }
