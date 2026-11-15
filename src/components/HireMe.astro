@@ -1,0 +1,72 @@
+---
+import { contact, copy, type Lang, routes } from '../i18n';
+import Layout from '../layouts/Layout.astro';
+import ContourField from './ContourField.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = copy[lang].hire;
+const nav = copy[lang].nav;
+const mailto = `mailto:${contact.email}?subject=${encodeURIComponent(t.ctaSubject)}`;
+---
+
+<Layout lang={lang} page="hire" title={t.title} description={t.description}>
+  <ContourField
+    slot="backdrop"
+    variant="hire"
+    class="absolute inset-x-0 top-0 -z-10 h-[30rem] w-full"
+  />
+
+  <section class="max-w-[38rem] pt-16 sm:pt-24">
+    <a
+      href={routes[lang].home}
+      class="group inline-flex items-center gap-1.5 text-base text-ink-soft no-underline hover:text-ink">
+      <svg
+        class="size-4 transition-transform group-hover:-translate-x-0.5"
+        viewBox="0 0 16 16"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true">
+        <path d="M10 3.5 5.5 8l4.5 4.5"></path>
+      </svg>
+      {nav.back}
+    </a>
+    <h1
+      class="stretch-wide mt-6 text-[2.125rem] leading-[1.08] font-semibold tracking-[-0.015em] sm:text-6xl">
+      {t.headline}
+    </h1>
+    <p class="mt-8 text-xl leading-relaxed text-ink-soft">{t.intro}</p>
+  </section>
+
+  <div class="mt-20 grid max-w-[36rem] gap-12 sm:mt-24 lg:max-w-none lg:grid-cols-2 lg:gap-x-16">
+    {
+      t.services.map((service) => (
+        <section class="max-w-[34rem]">
+          <h2 class="stretch-wide text-xl font-semibold text-balance">{service.title}</h2>
+          <p class="mt-3">{service.body}</p>
+        </section>
+      ))
+    }
+  </div>
+
+  <section
+    class="mt-20 max-w-[34rem] border-l-2 border-contour-index pl-6 sm:mt-24"
+    aria-labelledby="contact">
+    <h2 id="contact" class="stretch-wide text-2xl font-semibold text-balance">{t.ctaTitle}</h2>
+    <p class="mt-3">{t.ctaBody}</p>
+    <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
+      <a
+        href={mailto}
+        class="rounded-full bg-ink px-5 py-2.5 font-medium text-paper no-underline transition-colors hover:bg-water">
+        {t.ctaButton}
+      </a>
+      <a href={contact.linkedin} target="_blank" rel="noopener noreferrer">{t.ctaAlt}</a>
+    </div>
+  </section>
+</Layout>

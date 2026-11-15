@@ -1,0 +1,113 @@
+---
+import { contact, copy, type Lang, routes } from '../i18n';
+import Layout from '../layouts/Layout.astro';
+import ContourField from './ContourField.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = copy[lang].home;
+
+const links = [
+  { href: contact.github, label: 'github.com/metinsut' },
+  { href: contact.linkedin, label: 'linkedin.com/in/metinsut' },
+  { href: `mailto:${contact.email}`, label: contact.email }
+];
+---
+
+<Layout lang={lang} page="home" title={t.title} description={t.description}>
+  <ContourField slot="backdrop" class="absolute inset-x-0 top-0 -z-10 h-[40rem] w-full" />
+
+  <section class="max-w-[42rem] pt-24 sm:pt-36">
+    <h1
+      class="stretch-wide text-[2.125rem] leading-[1.08] font-semibold tracking-[-0.015em] text-balance sm:text-6xl">
+      {t.headline}
+    </h1>
+    <p class="mt-8 max-w-[34rem] text-xl leading-relaxed text-ink-soft">{t.intro}</p>
+  </section>
+
+  <div
+    class="mt-20 grid gap-20 sm:mt-28 lg:grid-cols-[minmax(0,36rem)_minmax(0,30rem)] lg:justify-between lg:gap-x-16">
+    <section class="max-w-[36rem]" aria-labelledby="route">
+      <h2 id="route" class="stretch-wide text-xl font-semibold">{t.routeTitle}</h2>
+      <p class="mt-4">{t.lead}</p>
+      <ol class="route mt-8">
+        {
+          t.route.map((stage) => (
+            <li class="relative pb-7 pl-9 last:pb-0">
+              <h3 class="stretch-wide font-semibold">{stage.name}</h3>
+              <p class="mt-1 text-ink-soft">{stage.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="mt-8">{t.ai}</p>
+      <p class="mt-5">
+        {t.freelance.before}<a href={routes[lang].hire}>{t.freelance.link}</a>{t.freelance.after}
+      </p>
+    </section>
+
+    <section class="max-w-[36rem] lg:col-start-2 lg:row-span-2 lg:row-start-1" aria-labelledby="work">
+      <h2 id="work" class="stretch-wide text-xl font-semibold">{t.workTitle}</h2>
+      <ol class="mt-6">
+        {
+          t.work.map((job) => (
+            <li class="grid grid-cols-[7.5rem_1fr] gap-x-4 border-t border-contour py-3 sm:grid-cols-[9rem_1fr]">
+              <span class="stretch-condensed text-ink-soft tabular-nums">{job.years}</span>
+              <span>
+                {job.role}, <span class="text-ink-soft">{job.place}</span>
+              </span>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="max-w-[36rem]" aria-labelledby="find">
+      <h2 id="find" class="stretch-wide text-xl font-semibold">{t.findTitle}</h2>
+      <ul class="mt-6 space-y-2">
+        {
+          links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                {...(link.href.startsWith('http') && { target: '_blank', rel: 'noopener noreferrer' })}>
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  /* A trail between waypoints, the way a route is drawn on a map. */
+  .route li::before {
+    content: '';
+    position: absolute;
+    left: 0.4375rem;
+    top: 1.35rem;
+    bottom: -0.15rem;
+    border-left: 2px dashed var(--contour-index);
+  }
+
+  .route li:last-child::before {
+    display: none;
+  }
+
+  .route li::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.4rem;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid var(--ink);
+    border-radius: 50%;
+    background: var(--paper);
+  }
+</style>

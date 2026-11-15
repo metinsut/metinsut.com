@@ -1,0 +1,73 @@
+@import "@fontsource-variable/archivo/wdth.css";
+@import "tailwindcss";
+
+/*
+ * Survey-sheet palette: drafting film, survey ink, water blue, contour sage.
+ * Dark by default; the visitor can switch to light (data-theme="light" on <html>).
+ */
+:root {
+  --paper: light-dark(#edf1ec, #0e1a22);
+  --ink: light-dark(#16283a, #dde6e1);
+  --ink-soft: light-dark(#4a5b66, #97a8a5);
+  --contour: light-dark(#c3d0bf, #1f313a);
+  --contour-index: light-dark(#97ab93, #2f4852);
+  --water: light-dark(#1d5fa0, #82b6ea);
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-contour: var(--contour);
+  --color-contour-index: var(--contour-index);
+  --color-water: var(--water);
+  --font-sans: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    background: var(--paper);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+
+  a {
+    color: var(--water);
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+
+  a:hover {
+    text-decoration-thickness: 2px;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--water);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@utility stretch-condensed {
+  font-stretch: 78%;
+}
+
+@utility stretch-wide {
+  font-stretch: 116%;
+}
+
+@utility stretch-widest {
+  font-stretch: 125%;
+}

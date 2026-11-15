@@ -1,0 +1,67 @@
+---
+import { buildContours } from '../lib/contours';
+
+interface Props {
+  variant?: 'home' | 'hire';
+  class?: string;
+}
+
+const { variant = 'home', class: className } = Astro.props;
+
+const width = 1440;
+const height = variant === 'home' ? 640 : 480;
+
+const peaks =
+  variant === 'home'
+    ? [
+        { x: 0.76, y: 0.34, height: 1, spread: 0.2 },
+        { x: 0.95, y: 0.82, height: 0.5, spread: 0.14 },
+        { x: 0.48, y: 0.02, height: 0.35, spread: 0.18 }
+      ]
+    : [
+        { x: 0.8, y: 0.4, height: 0.8, spread: 0.24 },
+        { x: 0.5, y: 0.0, height: 0.3, spread: 0.18 }
+      ];
+
+const lines = buildContours({ width, height, peaks, seed: variant === 'home' ? 7 : 19 });
+---
+
+<svg
+  class:list={['contour-field pointer-events-none', className]}
+  viewBox={`0 0 ${width} ${height}`}
+  preserveAspectRatio="xMidYMid slice"
+  aria-hidden="true">
+  {
+    lines.map((line) => (
+      <path
+        d={line.d}
+        pathLength="1"
+        class={line.index ? 'stroke-contour-index' : 'stroke-contour'}
+        stroke-width={line.index ? 1.4 : 0.9}
+        fill="none"
+        style={`--level: ${line.level}`}
+      />
+    ))
+  }
+</svg>
+
+<style>
+  .contour-field {
+    mask-image: linear-gradient(to bottom, black 55%, transparent);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .contour-field path {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      animation: survey 1.6s cubic-bezier(0.3, 0.6, 0.2, 1) forwards;
+      animation-delay: calc(var(--level) * 55ms);
+    }
+  }
+
+  @keyframes survey {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+</style>

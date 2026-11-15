@@ -1,5 +1,5 @@
 {
-  "name": "@example/basics",
+  "name": "metinsut.com",
   "type": "module",
   "version": "0.0.1",
   "private": true,
@@ -8,10 +8,23 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "clear": "rm -rf node_modules bun.lock .astro dist",
+    "astro": "astro",
+    "lint": "biome check .",
+    "format": "biome check --write ."
   },
   "dependencies": {
-    "astro": "^4.7.1",
-    "@astrojs/check": "^0.5.10"
+    "@astrojs/check": "^0.9.12",
+    "@fontsource-variable/archivo": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.5",
+    "astro": "^7.4.12",
+    "d3-contour": "^4.0.3",
+    "d3-geo": "^3.1.2",
+    "tailwindcss": "^4.3.5"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.6.8",
+    "@types/d3-contour": "^3.0.6",
+    "@types/d3-geo": "^3.1.1"
   }
 }
