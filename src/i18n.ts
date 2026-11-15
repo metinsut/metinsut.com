@@ -28,8 +28,6 @@ type Copy = {
     lead: string;
     routeTitle: string;
     route: Stage[];
-    ai: string;
-    freelance: { before: string; link: string; after: string };
     workTitle: string;
     work: Job[];
     findTitle: string;
@@ -74,19 +72,13 @@ export const copy: Record<Lang, Copy> = {
         },
         {
           name: 'Frontend and mobile',
-          body: 'Web apps with React and TypeScript, mobile apps with React Native, built to stay easy to change as they grow.'
+          body: 'I design the frontend architecture of web and mobile apps: modular, scalable and easy to change as the product grows, with several apps on one shared base when the product needs it.'
         },
         {
           name: 'Backend',
-          body: 'The APIs, databases and integrations behind the interface, with Node.js, Hono and PostgreSQL.'
+          body: 'The APIs, databases and integrations behind the interface, with Node.js, Bun and PostgreSQL.'
         }
       ],
-      ai: 'I also build AI features into products, in the places where they save users time.',
-      freelance: {
-        before: 'Since July 2026 I work freelance. If you have something to build, ',
-        link: 'here’s how I can help',
-        after: '.'
-      },
       workTitle: 'Work',
       work: [
         { years: '2026 – now', role: 'Product developer', place: 'Freelance' },
@@ -145,7 +137,7 @@ export const copy: Record<Lang, Copy> = {
       title: 'Metin Süt, ürün geliştirici',
       description:
         'Metin Süt, İstanbul’da serbest çalışan bir ürün geliştirici. Ürünleri analiz ve tasarımdan frontend, mobil ve backend geliştirmeye kadar uçtan uca yürütüyor.',
-      headline: 'Fikirleri ilk eskizden yayına kadar çalışan ürünlere dönüştürüyorum.',
+      headline: 'Fikirleri baştan sona, çalışan ürünlere dönüştürüyorum.',
       intro:
         'Ben Metin Süt, İstanbul’da ürün geliştiriciyim. Ürünleri analiz ve tasarımdan frontend, mobil ve backend geliştirmeye kadar uçtan uca yürütüyorum.',
       lead: 'Ürünün tek bir katmanında değil, tamamında çalışıyorum. Böylece devir teslimler azalıyor, aralarda kaybolan şeyler de.',
@@ -161,19 +153,13 @@ export const copy: Record<Lang, Copy> = {
         },
         {
           name: 'Frontend ve mobil',
-          body: 'React ve TypeScript ile web, React Native ile mobil uygulamalar; büyüdükçe değiştirmesi zorlaşmayacak şekilde.'
+          body: 'Web ve mobil uygulamaların frontend mimarisini kuruyorum: modüler, ölçeklenebilir ve ürün büyüdükçe kolayca değiştirilebilen yapılar; gerektiğinde birden fazla uygulamayı ortak bir altyapıda topluyorum.'
         },
         {
           name: 'Backend',
-          body: 'Arayüzün arkasındaki API’ler, veritabanları ve entegrasyonlar; Node.js, Hono ve PostgreSQL ile.'
+          body: 'Arayüzün arkasındaki API’ler, veritabanları ve entegrasyonlar; Node.js, Bun ve PostgreSQL ile.'
         }
       ],
-      ai: 'Ürünlere, kullanıcılara zaman kazandıracak yerlerde yapay zeka özellikleri de ekliyorum.',
-      freelance: {
-        before: 'Temmuz 2026’dan beri serbest çalışıyorum. Yapmak istediğin bir şey varsa ',
-        link: 'nasıl yardımcı olabileceğime bak',
-        after: '.'
-      },
       workTitle: 'Deneyim',
       work: [
         { years: '2026 – şimdi', role: 'Ürün geliştirici', place: 'Serbest' },
