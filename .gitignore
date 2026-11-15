@@ -16,3 +16,6 @@ node_modules/
 
 # macOS-specific files
 .DS_Store
+
+# local preview config for the Claude app
+.claude/launch.json
