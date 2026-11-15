@@ -29,6 +29,26 @@
   --font-sans: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
 }
 
+/*
+ * Soft fades between pages and when the theme changes (View Transitions).
+ * The logo keeps its own name so it stays put while the page fades.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 220ms;
+    animation-timing-function: ease-out;
+  }
+}
+
+.site-mark {
+  view-transition-name: site-mark;
+}
+
 @layer base {
   html {
     background: var(--paper);

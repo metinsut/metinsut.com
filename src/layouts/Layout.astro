@@ -57,7 +57,7 @@ const canonical = new URL(routes[lang][page], site);
         class="relative mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 pt-6 sm:px-8 sm:pt-8">
         <a
           href={routes[lang].home}
-          class="flex items-center gap-2.5 text-ink no-underline"
+          class="site-mark flex items-center gap-2.5 text-ink no-underline"
           aria-label={page === 'home' ? undefined : `Metin Süt, ${t.nav.home}`}>
           <Mark class="size-7 shrink-0" />
           <span class="stretch-widest text-base font-bold tracking-wide">Metin Süt</span>
@@ -124,15 +124,26 @@ const canonical = new URL(routes[lang][page], site);
 
       const sync = () => toggle?.setAttribute('aria-pressed', String(isDark()));
 
-      toggle?.addEventListener('click', () => {
-        const next = isDark() ? 'light' : 'dark';
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+      const applyTheme = (next: 'light' | 'dark') => {
         root.dataset.theme = next;
         const meta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
         if (meta) meta.content = next === 'dark' ? '#0e1a22' : '#edf1ec';
+        sync();
+      };
+
+      toggle?.addEventListener('click', () => {
+        const next = isDark() ? 'light' : 'dark';
         try {
           localStorage.setItem('theme', next);
         } catch {}
-        sync();
+        // Crossfade the colors where the browser supports it; switch instantly otherwise.
+        if (document.startViewTransition && !reduceMotion.matches) {
+          document.startViewTransition(() => applyTheme(next));
+        } else {
+          applyTheme(next);
+        }
       });
 
       sync();
