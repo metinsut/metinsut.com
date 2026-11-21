@@ -54,7 +54,7 @@ export const copy: Record<Lang, Copy> = {
     otherLang: 'Türkçe',
     nav: { hire: 'Hire me', home: 'Home', back: 'Back to home', darkTheme: 'Dark theme' },
     home: {
-      title: 'Metin Süt, product engineer',
+      title: 'Metin Süt, product engineer in Istanbul | Web and mobile apps',
       description:
         'Metin Süt is a freelance product engineer in Istanbul, turning work that companies run by hand, in spreadsheets or across scattered tools, into web and mobile apps, from understanding the problem to launch and upkeep.',
       headline: 'I turn ideas into products that work, from the first sketch to the release.',
@@ -114,9 +114,9 @@ export const copy: Record<Lang, Copy> = {
       findTitle: 'Find me'
     },
     hire: {
-      title: 'Hire Metin Süt',
+      title: 'Hire Metin Süt | MVPs, web and mobile apps',
       description:
-        'MVPs, web and mobile apps, admin panels, UX improvements and AI features, from analysis to backend, by one person.',
+        'MVPs, web and mobile apps, admin panels, UX improvements and AI features, from understanding the problem to launch, by one person.',
       headline: 'Hire me',
       intro:
         'I work with founders and small teams who need a product built, or an existing one made better. I handle product analysis, design, and frontend, mobile and backend development, so there’s one person between your idea and the release.',
@@ -156,7 +156,7 @@ export const copy: Record<Lang, Copy> = {
       darkTheme: 'Koyu tema'
     },
     home: {
-      title: 'Metin Süt, ürün mühendisi',
+      title: 'Metin Süt, İstanbul’da ürün mühendisi | Web ve mobil uygulama',
       description:
         'Metin Süt, İstanbul’da serbest çalışan bir ürün mühendisi. Şirketlerin elle, Excel’le ya da dağınık araçlarla yürüttüğü işleri, sorunu anlamaktan yayına ve bakıma kadar web ve mobil uygulamalara dönüştürüyor.',
       headline: 'Fikirleri baştan sona, çalışan ürünlere dönüştürüyorum.',
@@ -216,9 +216,9 @@ export const copy: Record<Lang, Copy> = {
       findTitle: 'Bağlantılar'
     },
     hire: {
-      title: 'Metin Süt ile çalışın',
+      title: 'Metin Süt ile çalışın | MVP, web ve mobil uygulama',
       description:
-        'MVP, web ve mobil uygulama, yönetim paneli, kullanıcı deneyimi iyileştirme ve yapay zeka özellikleri; analizden backend’e kadar tek kişiyle.',
+        'MVP, web ve mobil uygulama, yönetim paneli, kullanıcı deneyimi iyileştirme ve yapay zeka özellikleri; sorunu anlamaktan yayına kadar tek kişiyle.',
       headline: 'Birlikte çalışalım',
       intro:
         'Bir ürün yaptırmak ya da mevcut ürününü iyileştirmek isteyen girişimciler ve küçük ekiplerle çalışıyorum. Ürün analizi, tasarım, frontend, mobil ve backend geliştirmeyi ben üstleniyorum; fikrinle yayın arasında tek bir kişi var.',

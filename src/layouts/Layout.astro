@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import Mark from '../components/Mark.astro';
-import { copy, type Lang, type Page, routes } from '../i18n';
+import { contact, copy, type Lang, type Page, routes } from '../i18n';
 
 interface Props {
   lang: Lang;
@@ -15,6 +15,48 @@ const t = copy[lang];
 const other: Lang = lang === 'en' ? 'tr' : 'en';
 const site = Astro.site ?? new URL('https://www.metinsut.com');
 const canonical = new URL(routes[lang][page], site);
+const locales: Record<Lang, string> = { tr: 'tr_TR', en: 'en_US' };
+const role = t.home.work[0].role;
+const shareImage = new URL(`/og-${lang}.png`, site);
+
+// Who the site is about, for search engines (schema.org).
+const personId = new URL('/#person', site).href;
+const websiteId = new URL('/#website', site).href;
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': personId,
+      name: 'Metin Süt',
+      jobTitle: role,
+      description: t.home.description,
+      url: new URL(routes[lang].home, site).href,
+      image: new URL('/favicon/android-chrome-512x512.png', site).href,
+      email: `mailto:${contact.email}`,
+      address: { '@type': 'PostalAddress', addressLocality: 'İstanbul', addressCountry: 'TR' },
+      knowsLanguage: ['tr', 'en'],
+      sameAs: [contact.github, contact.linkedin]
+    },
+    {
+      '@type': 'WebSite',
+      '@id': websiteId,
+      name: 'Metin Süt',
+      url: site.href,
+      inLanguage: ['tr', 'en'],
+      publisher: { '@id': personId }
+    },
+    {
+      '@type': page === 'hire' ? 'ContactPage' : 'ProfilePage',
+      name: title,
+      description,
+      url: canonical.href,
+      inLanguage: lang,
+      isPartOf: { '@id': websiteId },
+      mainEntity: { '@id': personId }
+    }
+  ]
+};
 ---
 
 <!doctype html>
@@ -29,10 +71,21 @@ const canonical = new URL(routes[lang][page], site);
     <link rel="alternate" hreflang="en" href={new URL(routes.en[page], site)} />
     <link rel="alternate" hreflang="tr" href={new URL(routes.tr[page], site)} />
     <link rel="alternate" hreflang="x-default" href={new URL(routes.tr[page], site)} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta property="og:site_name" content="Metin Süt" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content={locales[lang]} />
+    <meta property="og:locale:alternate" content={locales[other]} />
+    <meta property="og:image" content={shareImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`Metin Süt, ${role.toLocaleLowerCase(lang)}`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={shareImage} />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon/favicon.ico" sizes="32x32" />
     <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
