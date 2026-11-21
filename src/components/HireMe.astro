@@ -11,9 +11,37 @@ const { lang } = Astro.props;
 const t = copy[lang].hire;
 const nav = copy[lang].nav;
 const mailto = `mailto:${contact.email}?subject=${encodeURIComponent(t.ctaSubject)}`;
+
+// For search engines: what is on offer here, and where this page sits in the site.
+const site = Astro.site ?? new URL('https://www.metinsut.com');
+const person = { '@id': new URL('/#person', site).href };
+const schema = [
+  ...t.services.map((service) => ({
+    '@type': 'Service',
+    name: service.title,
+    description: service.body,
+    provider: person,
+    areaServed: { '@type': 'Country', name: 'Türkiye' },
+    availableLanguage: ['tr', 'en'],
+    url: new URL(routes[lang].hire, site).href
+  })),
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Metin Süt', item: new URL(routes[lang].home, site).href },
+      { '@type': 'ListItem', position: 2, name: t.headline, item: new URL(routes[lang].hire, site).href }
+    ]
+  }
+];
 ---
 
-<Layout lang={lang} page="hire" title={t.title} description={t.description}>
+<Layout
+  lang={lang}
+  page="hire"
+  title={t.title}
+  description={t.description}
+  image={`/og-hire-${lang}.png`}
+  schema={schema}>
   <ContourField
     slot="backdrop"
     variant="hire"
@@ -25,7 +53,7 @@ const mailto = `mailto:${contact.email}?subject=${encodeURIComponent(t.ctaSubjec
       href={routes[lang].home}
       class="group inline-flex items-center gap-1.5 text-base text-ink-soft no-underline hover:text-ink">
       <svg
-        class="size-4 transition-transform group-hover:-translate-x-0.5"
+        class="size-4 motion-safe:transition-transform motion-safe:group-hover:-translate-x-0.5"
         viewBox="0 0 16 16"
         fill="none"
         stroke="currentColor"
@@ -38,10 +66,10 @@ const mailto = `mailto:${contact.email}?subject=${encodeURIComponent(t.ctaSubjec
       {nav.back}
     </a>
     <h1
-      class="stretch-wide mt-6 text-[2.125rem] leading-[1.08] font-semibold tracking-[-0.015em] sm:text-6xl">
+      class="stretch-wide mt-6 text-[1.75rem] leading-[1.1] font-semibold tracking-[-0.015em] sm:text-5xl">
       {t.headline}
     </h1>
-    <p class="mt-8 text-xl leading-relaxed text-ink-soft">{t.intro}</p>
+    <p class="mt-5 text-base leading-relaxed text-ink-soft sm:mt-6 sm:text-lg">{t.intro}</p>
   </section>
 
   <div class="mt-20 grid max-w-[36rem] gap-12 sm:mt-24 lg:max-w-none lg:grid-cols-2 lg:gap-x-16">
@@ -63,7 +91,7 @@ const mailto = `mailto:${contact.email}?subject=${encodeURIComponent(t.ctaSubjec
     <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
       <a
         href={mailto}
-        class="rounded-full bg-ink px-5 py-2.5 font-medium text-paper no-underline transition-colors hover:bg-water">
+        class="rounded-full bg-ink px-5 py-2.5 font-medium text-paper no-underline transition-colors hover:bg-water focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-water active:translate-y-px">
         {t.ctaButton}
       </a>
       <a href={contact.linkedin} target="_blank" rel="noopener noreferrer">{t.ctaAlt}</a>

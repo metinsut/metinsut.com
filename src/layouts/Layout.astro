@@ -8,16 +8,20 @@ interface Props {
   page: Page;
   title: string;
   description: string;
+  /** Link-preview image path; defaults to the home page's image for this language. */
+  image?: string;
+  /** Extra schema.org nodes for this page, added to the site-wide graph. */
+  schema?: Record<string, unknown>[];
 }
 
-const { lang, page, title, description } = Astro.props;
+const { lang, page, title, description, image, schema = [] } = Astro.props;
 const t = copy[lang];
 const other: Lang = lang === 'en' ? 'tr' : 'en';
 const site = Astro.site ?? new URL('https://www.metinsut.com');
 const canonical = new URL(routes[lang][page], site);
 const locales: Record<Lang, string> = { tr: 'tr_TR', en: 'en_US' };
 const role = t.home.work[0].role;
-const shareImage = new URL(`/og-${lang}.png`, site);
+const shareImage = new URL(image ?? `/og-${lang}.png`, site);
 
 // Who the site is about, for search engines (schema.org).
 const personId = new URL('/#person', site).href;
@@ -54,7 +58,8 @@ const structuredData = {
       inLanguage: lang,
       isPartOf: { '@id': websiteId },
       mainEntity: { '@id': personId }
-    }
+    },
+    ...schema
   ]
 };
 ---

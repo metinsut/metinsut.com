@@ -119,22 +119,22 @@ export const copy: Record<Lang, Copy> = {
     hire: {
       title: 'Hire Metin Süt | MVPs, web and mobile apps',
       description:
-        'MVPs, web and mobile apps, admin panels, UX improvements and AI features, from understanding the problem to launch, by one person.',
+        'First versions (MVPs), web and mobile apps, admin panels, automations, UX improvements and AI features, from understanding the problem to launch, by one person in Istanbul.',
       headline: 'Hire me',
       intro:
-        'I work with founders and small teams who need a product built, or an existing one made better. I handle product analysis, design, and frontend, mobile and backend development, so there’s one person between your idea and the release.',
+        'I work with companies and founders who want to move their work into software, launch a new product or improve one they already have. I take every step, from understanding the problem to launch and upkeep, so there’s one person between your idea and the release.',
       services: [
         {
-          title: 'Your first version',
-          body: 'You have an idea and need an MVP you can put in front of users. We work out the scope together, then I design and build it, web or mobile, frontend to backend.'
+          title: 'Your first version (MVP)',
+          body: 'You have an idea and want it in front of real users. We decide together what the first version needs, then I design and build the web or mobile app, along with everything that runs behind it.'
         },
         {
           title: 'Web apps, admin panels and automations',
-          body: 'The tools your team opens every day: dashboards, back-office panels, and the integrations and scripts that take manual work off their plate.'
+          body: 'The tools your team opens every day: panels, back-office screens, automations that take spreadsheet and manual work off their plate, and links between the systems you already use.'
         },
         {
           title: 'Better UX for a product you already have',
-          body: 'If users get stuck or the interface has grown messy, I review the flows, fix what’s in the way, and clean up the frontend underneath: design system, state, performance.'
+          body: 'If users get stuck or the interface has grown messy, I review the flows and clear what’s in the way. I also tidy the structure behind the screens, so the product loads faster, looks consistent and is easy to change.'
         },
         {
           title: 'AI features',
@@ -224,22 +224,22 @@ export const copy: Record<Lang, Copy> = {
     hire: {
       title: 'Metin Süt ile çalışın | MVP, web ve mobil uygulama',
       description:
-        'MVP, web ve mobil uygulama, yönetim paneli, kullanıcı deneyimi iyileştirme ve yapay zeka özellikleri; sorunu anlamaktan yayına kadar tek kişiyle.',
+        'İlk sürüm (MVP), web ve mobil uygulama, yönetim paneli, otomasyon, kullanıcı deneyimi iyileştirme ve yapay zeka özellikleri; sorunu anlamaktan yayına kadar tek kişiyle, İstanbul.',
       headline: 'Birlikte çalışalım',
       intro:
-        'Bir ürün yaptırmak ya da mevcut ürününü iyileştirmek isteyen girişimciler ve küçük ekiplerle çalışıyorum. Ürün analizi, tasarım, frontend, mobil ve backend geliştirmeyi ben üstleniyorum; fikrinle yayın arasında tek bir kişi var.',
+        'İşlerini dijitale taşımak, yeni bir ürün çıkarmak ya da mevcut ürününü iyileştirmek isteyen şirketler ve girişimcilerle çalışıyorum. Sorunu anlamaktan yayına ve bakıma kadar her adımı ben üstleniyorum; fikrinle yayın arasında tek bir kişi var.',
       services: [
         {
-          title: 'İlk sürüm',
-          body: 'Bir fikrin var ve kullanıcıların önüne koyabileceğin bir MVP’ye ihtiyacın var. Kapsamı birlikte netleştiriyoruz, sonra web ya da mobil, frontend’den backend’e kadar tasarlayıp geliştiriyorum.'
+          title: 'İlk sürüm (MVP)',
+          body: 'Bir fikrin var ve onu gerçek kullanıcıların önüne koymak istiyorsun. İlk sürümde neyin şart olduğunu birlikte belirliyoruz, sonra web ya da mobil uygulamayı, arkasında çalışan her şeyle birlikte tasarlayıp geliştiriyorum.'
         },
         {
           title: 'Web uygulamaları, yönetim panelleri ve otomasyonlar',
-          body: 'Ekibinin her gün açtığı araçlar: paneller, yönetim ekranları ve elle yapılan işleri ortadan kaldıran entegrasyonlar.'
+          body: 'Ekibinin her gün açtığı araçlar: paneller, yönetim ekranları, Excel’de ya da elle yapılan işleri ortadan kaldıran otomasyonlar ve zaten kullandığın sistemler arasındaki bağlantılar.'
         },
         {
           title: 'Mevcut ürünün kullanıcı deneyimi',
-          body: 'Kullanıcılar bir yerde takılıyorsa ya da arayüz zamanla dağıldıysa akışları inceliyor, önlerindeki engelleri kaldırıyor ve alttaki frontend’i toparlıyorum: design system, state, performans.'
+          body: 'Kullanıcılar bir yerde takılıyorsa ya da arayüz zamanla dağıldıysa akışları inceliyor, önlerindeki engelleri kaldırıyorum. Ekranların arkasındaki yapıyı da toparlıyorum: daha hızlı açılan, tutarlı görünen ve kolayca değiştirilebilen bir ürün.'
         },
         {
           title: 'Yapay zeka özellikleri',

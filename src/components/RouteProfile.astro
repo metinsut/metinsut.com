@@ -1,0 +1,246 @@
+---
+/*
+ * The route from idea to launch, drawn as an elevation profile: each step is a
+ * terrace the line climbs to, and after the last one (launch) it runs on level,
+ * because a released product keeps going. Wide screens draw the profile; small
+ * screens walk the same stops down a vertical trail.
+ */
+interface Stage {
+  name: string;
+  short: string;
+}
+
+interface Props {
+  stages: Stage[];
+}
+
+const { stages } = Astro.props;
+
+// Profile drawn in a 1000 x 160 box, stretched to the container's width.
+const W = 1000;
+const H = 160;
+const count = stages.length;
+const top = 26;
+const bottom = 130;
+const stops = stages.map((_, i) => ({
+  x: (W / count) * i,
+  y: bottom - ((bottom - top) / (count - 1)) * i
+}));
+
+// Smooth terraces: level at every stop, an S-shaped climb between them.
+const segments = stops.slice(1).map((p, i) => {
+  const a = stops[i];
+  const mid = (a.x + p.x) / 2;
+  return `C ${mid} ${a.y} ${mid} ${p.y} ${p.x} ${p.y}`;
+});
+const last = stops[count - 1];
+const line = `M 0 ${stops[0].y} ${segments.join(' ')} L ${W} ${last.y}`;
+const ground = `${line} L ${W} ${H} L 0 ${H} Z`;
+const pct = (y: number) => `${((y / H) * 100).toFixed(2)}%`;
+---
+
+<div class="route-profile">
+  <div class="rise" aria-hidden="true">
+    <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" aria-hidden="true">
+      {
+        stops.map((s) => (
+          <line class="grid-line" x1="0" x2={W} y1={s.y} y2={s.y} vector-effect="non-scaling-stroke" />
+        ))
+      }
+      <g class="survey">
+        <path class="ground" d={ground} />
+        <path class="trail" d={line} vector-effect="non-scaling-stroke" />
+      </g>
+    </svg>
+    {
+      stops.map((s, i) => (
+        <span
+          class:list={['stop', { 'stop-launch': i === count - 1 }]}
+          style={`--x: ${(100 / count) * i}%; --y: ${pct(s.y)}; --i: ${i}`}
+        />
+      ))
+    }
+  </div>
+
+  <ol class="stages">
+    {
+      stages.map((stage, i) => (
+        <li class:list={['stage', { 'stage-launch': i === count - 1 }]} style={`--i: ${i}`}>
+          <h3 class="stretch-wide leading-snug font-semibold">{stage.name}</h3>
+          <p class="mt-1 hidden text-base leading-snug text-ink-soft sm:block">{stage.short}</p>
+        </li>
+      ))
+    }
+  </ol>
+</div>
+
+<style>
+  /* Hallmark · component: route profile · genre: editorial · theme: brand (survey sheet, Archivo) · states: n/a, static figure · contrast: pass · v2.0.0 */
+  /* Hallmark · pre-emit critique: P4 H5 E4 S5 R4 V5 · weakest: P, a diagram argues less than a sentence; the level run after launch carries the claim that the work continues */
+  /* Hallmark · waive 26b · no control inside, only four step headings on the route profile · the profile is a static figure of the steps, nothing here is pressed */
+
+  .route-profile {
+    --marker: 0.875rem;
+    --draw: 1.4s;
+  }
+
+  .route-profile :focus-visible {
+    outline: 2px solid var(--water);
+    outline-offset: 3px;
+  }
+
+  /* Small screens: the same stops down a vertical trail. */
+  .rise {
+    display: none;
+  }
+
+  .stages {
+    display: grid;
+    gap: 1.1rem;
+  }
+
+  .stage {
+    position: relative;
+    padding-left: 1.75rem;
+  }
+
+  .stage::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.35rem;
+    width: var(--marker);
+    height: var(--marker);
+    border: 2px solid var(--ink);
+    border-radius: 50%;
+    background: var(--paper);
+  }
+
+  .stage:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: calc(var(--marker) / 2 - 1px);
+    top: calc(0.35rem + var(--marker));
+    bottom: -1.1rem;
+    border-left: 2px dashed var(--contour-index);
+  }
+
+  .stage-launch::before {
+    border-color: var(--water);
+    background: var(--water);
+    box-shadow: 0 0 0 4px color-mix(in oklab, var(--water) 22%, transparent);
+  }
+
+  /* Wide screens: the elevation profile, one column per stop. */
+  @media (width >= 64rem) {
+    .rise {
+      display: block;
+      position: relative;
+      height: 8.5rem;
+    }
+
+    .rise svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .grid-line {
+      stroke: var(--contour);
+      stroke-width: 1;
+      stroke-dasharray: 2 5;
+    }
+
+    .ground {
+      fill: color-mix(in oklab, var(--contour) 55%, transparent);
+    }
+
+    .trail {
+      fill: none;
+      stroke: var(--ink);
+      stroke-width: 2;
+      stroke-linejoin: round;
+    }
+
+    /* Each stop drops a leader to the base line, where its name stands. */
+    .stop {
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      bottom: 0;
+    }
+
+    .stop::before {
+      content: '';
+      position: absolute;
+      left: -1px;
+      top: 0;
+      bottom: 0;
+      border-left: 1.5px dashed var(--contour-index);
+    }
+
+    .stop::after {
+      content: '';
+      position: absolute;
+      left: calc(var(--marker) / -2);
+      top: calc(var(--marker) / -2);
+      width: var(--marker);
+      height: var(--marker);
+      border: 2px solid var(--ink);
+      border-radius: 50%;
+      background: var(--paper);
+    }
+
+    .stop-launch::after {
+      border-color: var(--water);
+      background: var(--water);
+      box-shadow: 0 0 0 5px color-mix(in oklab, var(--water) 22%, transparent);
+    }
+
+    .stages {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0;
+      margin-top: 1rem;
+    }
+
+    .stage {
+      padding: 0 2rem 0 0;
+      min-width: 0;
+    }
+
+    .stage::before,
+    .stage::after {
+      display: none;
+    }
+  }
+
+  /* The trail is surveyed left to right; each stop and its name arrive as the line reaches it. */
+  @media (prefers-reduced-motion: no-preference) {
+    .survey {
+      animation: trace var(--draw) cubic-bezier(0.45, 0, 0.25, 1) 0.2s both;
+    }
+
+    .stop,
+    .stage {
+      animation: arrive-stop 0.45s ease-out both;
+      animation-delay: calc(0.2s + var(--draw) * var(--i) / 4);
+    }
+  }
+
+  @keyframes trace {
+    from {
+      clip-path: inset(-10% 100% -10% 0);
+    }
+    to {
+      clip-path: inset(-10% 0 -10% 0);
+    }
+  }
+
+  @keyframes arrive-stop {
+    from {
+      opacity: 0;
+    }
+  }
+</style>

@@ -2,6 +2,7 @@
 import { contact, copy, type Lang, routes } from '../i18n';
 import Layout from '../layouts/Layout.astro';
 import ContourField from './ContourField.astro';
+import RouteProfile from './RouteProfile.astro';
 
 interface Props {
   lang: Lang;
@@ -32,23 +33,9 @@ const links = [
       </p>
     </section>
 
-    <section class="mt-8 sm:mt-14" aria-labelledby="flow">
+    <section class="mt-10 sm:mt-14" aria-labelledby="flow">
       <h2 id="flow" class="sr-only">{t.routeTitle}</h2>
-      <ol class="flow grid lg:grid-cols-4">
-        {
-          t.route.map((stage, i) => (
-            <li
-              class="flow-step relative flex items-baseline gap-3 rounded-md border border-contour-index bg-paper/85 px-4 py-2.5 backdrop-blur-sm sm:block sm:p-5"
-              style={`--i: ${i}`}>
-              <span class="stretch-condensed text-sm font-medium tracking-[0.06em] text-water tabular-nums">
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <h3 class="stretch-wide leading-snug font-semibold sm:mt-1">{stage.name}</h3>
-              <p class="mt-1.5 hidden text-base leading-snug text-ink-soft sm:block">{stage.short}</p>
-            </li>
-          ))
-        }
-      </ol>
+      <RouteProfile stages={t.route} />
     </section>
   </div>
 
@@ -63,7 +50,7 @@ const links = [
             <li class="relative pb-10 pl-9 last:pb-0">
               <h3 class="stretch-wide font-semibold">{stage.name}</h3>
               <p class="mt-1 text-ink-soft">{stage.body}</p>
-              <p class="stretch-condensed mt-4 text-sm font-medium tracking-[0.06em] uppercase">
+              <p class="mt-4 text-base font-medium">
                 {t.outcomeLabel}
               </p>
               <ul class="outcomes mt-1.5 space-y-1 text-base text-ink-soft">
@@ -116,78 +103,6 @@ const links = [
 </Layout>
 
 <style>
-  /*
-   * The route at a glance: cards joined by a dashed trail with an arrowhead,
-   * running down on small screens and across on wide ones.
-   */
-  .flow {
-    --gap: 1.25rem;
-    gap: var(--gap);
-  }
-
-  @media (width >= 40rem) {
-    .flow {
-      --gap: 1.75rem;
-    }
-  }
-
-  .flow-step:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    left: 1.5rem;
-    top: 100%;
-    height: var(--gap);
-    border-left: 2px dashed var(--contour-index);
-  }
-
-  .flow-step:not(:last-child)::before {
-    content: '';
-    position: absolute;
-    left: calc(1.5rem - 4px);
-    top: calc(100% + var(--gap) - 11px);
-    width: 10px;
-    height: 10px;
-    border-right: 2px solid var(--water);
-    border-bottom: 2px solid var(--water);
-    transform: rotate(45deg);
-  }
-
-  @media (width >= 64rem) {
-    .flow {
-      --gap: 2.5rem;
-    }
-
-    .flow-step:not(:last-child)::after {
-      left: 100%;
-      top: 50%;
-      width: var(--gap);
-      height: 0;
-      border-left: 0;
-      border-top: 2px dashed var(--contour-index);
-    }
-
-    .flow-step:not(:last-child)::before {
-      left: calc(100% + var(--gap) - 11px);
-      top: calc(50% - 4px);
-      transform: rotate(-45deg);
-    }
-  }
-
-  /* Steps arrive one after another, in the order you'd walk them. */
-  @media (prefers-reduced-motion: no-preference) {
-    .flow-step {
-      animation: arrive 0.5s cubic-bezier(0.3, 0.6, 0.2, 1) both;
-      animation-delay: calc(0.25s + var(--i) * 0.12s);
-    }
-  }
-
-  @keyframes arrive {
-    from {
-      opacity: 0;
-      translate: 0 0.5rem;
-    }
-  }
-
   /* A trail between waypoints, the way a route is drawn on a map. */
   .route > li::before {
     content: '';
