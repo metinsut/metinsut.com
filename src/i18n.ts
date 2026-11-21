@@ -54,12 +54,12 @@ export const copy: Record<Lang, Copy> = {
     otherLang: 'Türkçe',
     nav: { hire: 'Hire me', home: 'Home', back: 'Back to home', darkTheme: 'Dark theme' },
     home: {
-      title: 'Metin Süt, product engineer in Istanbul | Web and mobile apps',
+      title: 'Metin Süt, product developer in Istanbul | Web and mobile apps',
       description:
-        'Metin Süt is a freelance product engineer in Istanbul, turning work that companies run by hand, in spreadsheets or across scattered tools, into web and mobile apps, from understanding the problem to launch and upkeep.',
+        'Metin Süt is a freelance product developer in Istanbul, turning work that companies run by hand, in spreadsheets or across scattered tools, into web and mobile apps, from understanding the problem to launch and upkeep.',
       headline: 'I turn ideas into products that work, from the first sketch to the release.',
       intro:
-        'I’m Metin Süt, a product engineer in Istanbul. I take the work companies run by hand, in spreadsheets or across disconnected tools, and turn it into apps their teams and customers enjoy using every day.',
+        'I’m Metin Süt, a product developer in Istanbul. I take the work companies run by hand, in spreadsheets or across disconnected tools, and turn it into apps their teams and customers enjoy using every day.',
       lead: 'My aim is to take a problem in your business, move it into a digital product and solve it there. From the first conversation to keeping the product running, you deal with the same person, so nothing gets lost in a handoff.',
       routeTitle: 'From idea to release',
       route: [
@@ -107,13 +107,12 @@ export const copy: Record<Lang, Copy> = {
       outcomeLabel: 'What you get',
       workTitle: 'Work',
       work: [
-        { years: '2026 – now', role: 'Product engineer', place: 'Freelance' },
-        { years: '2024 – 2026', role: 'Software engineer', place: 'Qkare' },
-        { years: '2023 – 2024', role: 'Software engineer', place: 'Optimus Yazılım' },
-        { years: '2021 – 2022', role: 'Software engineer', place: 'Borda Technology' },
-        { years: '2019 – 2021', role: 'Software engineer', place: 'ComeOn Group' },
-        { years: '2017 – 2019', role: 'Software engineer', place: 'Gülenayva' },
-        { years: '2013 – 2016', role: 'Mapping engineer', place: 'Infotech' }
+        { years: '2026 – now', role: 'Product developer', place: 'Freelance' },
+        { years: '2024 – 2026', role: 'Software developer', place: 'Qkare' },
+        { years: '2023 – 2024', role: 'Software developer', place: 'Optimus Yazılım' },
+        { years: '2021 – 2022', role: 'Software developer', place: 'Borda Technology' },
+        { years: '2019 – 2021', role: 'Software developer', place: 'ComeOn Group' },
+        { years: '2017 – 2019', role: 'Software developer', place: 'Gülenayva' }
       ],
       findTitle: 'Find me'
     },
@@ -160,12 +159,12 @@ export const copy: Record<Lang, Copy> = {
       darkTheme: 'Koyu tema'
     },
     home: {
-      title: 'Metin Süt, İstanbul’da ürün mühendisi | Web ve mobil uygulama',
+      title: 'Metin Süt, İstanbul’da ürün geliştirici | Web ve mobil uygulama',
       description:
-        'Metin Süt, İstanbul’da serbest çalışan bir ürün mühendisi. Şirketlerin elle, Excel’le ya da dağınık araçlarla yürüttüğü işleri, sorunu anlamaktan yayına ve bakıma kadar web ve mobil uygulamalara dönüştürüyor.',
+        'Metin Süt, İstanbul’da serbest çalışan bir ürün geliştirici. Şirketlerin elle, Excel’le ya da dağınık araçlarla yürüttüğü işleri, sorunu anlamaktan yayına ve bakıma kadar web ve mobil uygulamalara dönüştürüyor.',
       headline: 'Fikirleri baştan sona, çalışan ürünlere dönüştürüyorum.',
       intro:
-        'Ben Metin Süt, İstanbul’da ürün mühendisiyim. Şirketlerin elle, Excel’le ya da birbirinden kopuk araçlarla yürüttüğü işleri, ekiplerinin ve müşterilerinin her gün severek kullandığı uygulamalara dönüştürüyorum.',
+        'Ben Metin Süt, İstanbul’da ürün geliştiriciyim. Şirketlerin elle, Excel’le ya da birbirinden kopuk araçlarla yürüttüğü işleri, ekiplerinin ve müşterilerinin her gün severek kullandığı uygulamalara dönüştürüyorum.',
       lead: 'Amacım, işindeki bir sorunu dijital bir ürüne taşıyıp orada çözmek. İlk konuşmadan ürünü yayında tutmaya kadar hep aynı kişiyle ilerliyorsun; devir teslim olmadığı için arada hiçbir şey kaybolmuyor.',
       routeTitle: 'Fikirden yayına',
       route: [
@@ -213,13 +212,12 @@ export const copy: Record<Lang, Copy> = {
       outcomeLabel: 'Ortaya çıkan',
       workTitle: 'Deneyim',
       work: [
-        { years: '2026 – şimdi', role: 'Ürün mühendisi', place: 'Serbest' },
-        { years: '2024 – 2026', role: 'Yazılım mühendisi', place: 'Qkare' },
-        { years: '2023 – 2024', role: 'Yazılım mühendisi', place: 'Optimus Yazılım' },
-        { years: '2021 – 2022', role: 'Yazılım mühendisi', place: 'Borda Technology' },
-        { years: '2019 – 2021', role: 'Yazılım mühendisi', place: 'ComeOn Group' },
-        { years: '2017 – 2019', role: 'Yazılım mühendisi', place: 'Gülenayva' },
-        { years: '2013 – 2016', role: 'Harita mühendisi', place: 'Infotech' }
+        { years: '2026 – şimdi', role: 'Ürün geliştirici', place: 'Serbest' },
+        { years: '2024 – 2026', role: 'Yazılım geliştirici', place: 'Qkare' },
+        { years: '2023 – 2024', role: 'Yazılım geliştirici', place: 'Optimus Yazılım' },
+        { years: '2021 – 2022', role: 'Yazılım geliştirici', place: 'Borda Technology' },
+        { years: '2019 – 2021', role: 'Yazılım geliştirici', place: 'ComeOn Group' },
+        { years: '2017 – 2019', role: 'Yazılım geliştirici', place: 'Gülenayva' }
       ],
       findTitle: 'Bağlantılar'
     },
