@@ -93,9 +93,11 @@ const structuredData = {
     <meta name="theme-color" content="#0e1a22" />
     <meta name="generator" content={Astro.generator} />
     <script is:inline>
-      // Dark is the default. Apply a saved light choice before first paint so the page doesn't flash.
+      // Every visit opens dark. A switch to light lasts only while this tab is open,
+      // so it carries across pages; apply it before first paint so the page doesn't flash.
       try {
-        if (localStorage.getItem('theme') === 'light') {
+        localStorage.removeItem('theme'); // drop the old lasting choice from earlier versions
+        if (sessionStorage.getItem('theme') === 'light') {
           document.documentElement.dataset.theme = 'light';
           document.querySelector('meta[name="theme-color"]').content = '#edf1ec';
         }
@@ -189,7 +191,7 @@ const structuredData = {
       toggle?.addEventListener('click', () => {
         const next = isDark() ? 'light' : 'dark';
         try {
-          localStorage.setItem('theme', next);
+          sessionStorage.setItem('theme', next);
         } catch {}
         // Crossfade the colors where the browser supports it; switch instantly otherwise.
         if (document.startViewTransition && !reduceMotion.matches) {

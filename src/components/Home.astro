@@ -21,7 +21,7 @@ const links = [
   <ContourField slot="backdrop" class="absolute inset-x-0 top-0 -z-10 h-[40rem] w-full" />
 
   <!-- The first screen: who I am, then the whole route at a glance. -->
-  <div class="flex flex-col justify-center pt-8 pb-6 sm:min-h-[calc(100svh-4.25rem)] sm:pt-10 sm:pb-16">
+  <div class="pt-12 sm:pt-20">
     <section class="max-w-[46rem]">
       <h1
         class="stretch-wide text-[1.75rem] leading-[1.1] font-semibold tracking-[-0.015em] text-balance sm:text-5xl">
@@ -49,14 +49,11 @@ const links = [
           ))
         }
       </ol>
-      <p class="mt-6 text-base">
-        <a href="#route">{t.flowMore}</a>
-      </p>
     </section>
   </div>
 
   <div
-    class="mt-16 grid gap-20 sm:mt-20 lg:grid-cols-[minmax(0,36rem)_minmax(0,30rem)] lg:justify-between lg:gap-x-16">
+    class="mt-20 grid gap-20 sm:mt-24 lg:grid-cols-[minmax(0,36rem)_minmax(0,30rem)] lg:justify-between lg:gap-x-16">
     <section class="max-w-[36rem]" aria-labelledby="route">
       <h2 id="route" class="stretch-wide text-xl font-semibold">{t.routeTitle}</h2>
       <p class="mt-4">{t.lead}</p>

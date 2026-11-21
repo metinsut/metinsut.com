@@ -29,7 +29,6 @@ type Copy = {
     routeTitle: string;
     route: Stage[];
     outcomeLabel: string;
-    flowMore: string;
     workTitle: string;
     work: Job[];
     findTitle: string;
@@ -106,7 +105,6 @@ export const copy: Record<Lang, Copy> = {
         }
       ],
       outcomeLabel: 'What you get',
-      flowMore: 'Each step in detail',
       workTitle: 'Work',
       work: [
         { years: '2026 – now', role: 'Product engineer', place: 'Freelance' },
@@ -213,7 +211,6 @@ export const copy: Record<Lang, Copy> = {
         }
       ],
       outcomeLabel: 'Ortaya çıkan',
-      flowMore: 'Adımların ayrıntısı',
       workTitle: 'Deneyim',
       work: [
         { years: '2026 – şimdi', role: 'Ürün mühendisi', place: 'Serbest' },
