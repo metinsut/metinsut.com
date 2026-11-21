@@ -19,3 +19,5 @@ node_modules/
 
 # local preview config for the Claude app
 .claude/launch.json
+
+.hallmark
