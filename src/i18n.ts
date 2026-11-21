@@ -14,7 +14,7 @@ export const contact = {
 
 type Job = { years: string; role: string; place: string };
 type Service = { title: string; body: string };
-type Stage = { name: string; body: string; outcomes: string[] };
+type Stage = { name: string; short: string; body: string; outcomes: string[] };
 
 type Copy = {
   langName: string;
@@ -29,6 +29,7 @@ type Copy = {
     routeTitle: string;
     route: Stage[];
     outcomeLabel: string;
+    flowMore: string;
     workTitle: string;
     work: Job[];
     findTitle: string;
@@ -65,6 +66,7 @@ export const copy: Record<Lang, Copy> = {
       route: [
         {
           name: 'Understand the problem',
+          short: 'I listen to how you work, and we decide what moves into software.',
           body: 'I start by listening to how your business runs today: who does what, and where time and money get lost. Then we decide together what moves into software and what the first version can’t do without.',
           outcomes: [
             'A clear statement of the problem and the goal',
@@ -74,6 +76,7 @@ export const copy: Record<Lang, Copy> = {
         },
         {
           name: 'Design the solution',
+          short: 'You see the screens and click through them before any code is written.',
           body: 'You see the product before a line of code is written: which screens exist, where people click, what they see next. Rough sketches first, then realistic screens you can click through. If something is wrong, we fix it here, while it’s still cheap.',
           outcomes: [
             'Rough sketches of every screen (wireframes)',
@@ -83,6 +86,7 @@ export const copy: Record<Lang, Copy> = {
         },
         {
           name: 'Build the product',
+          short: 'The web or mobile app, together with everything that runs behind it.',
           body: 'I turn those screens into a working product: the part people see, whether a website, a panel or a phone app, and the part behind it that stores data, manages accounts and talks to other systems. One person builds both, so the pieces fit.',
           outcomes: [
             'Web and mobile apps (frontend, mobile)',
@@ -92,6 +96,7 @@ export const copy: Record<Lang, Copy> = {
         },
         {
           name: 'Launch and keep it running',
+          short: 'It goes live for your users and stays healthy and up to date.',
           body: 'I open the product to your users, and the work doesn’t stop there. New versions go out without downtime, I find out when something breaks, and your data is backed up. What real users tell us shapes what we improve next.',
           outcomes: [
             'Release and automatic updates (CI/CD)',
@@ -101,6 +106,7 @@ export const copy: Record<Lang, Copy> = {
         }
       ],
       outcomeLabel: 'What you get',
+      flowMore: 'Each step in detail',
       workTitle: 'Work',
       work: [
         { years: '2026 – now', role: 'Product engineer', place: 'Freelance' },
@@ -167,6 +173,7 @@ export const copy: Record<Lang, Copy> = {
       route: [
         {
           name: 'Sorunu anlamak',
+          short: 'İşini dinliyorum, neyin dijitale taşınacağına birlikte karar veriyoruz.',
           body: 'Önce işini dinliyorum: bugün nasıl yürüyor, kim ne yapıyor, zaman ve para nerede kayboluyor. Sonra neyin dijitale taşınacağına ve ilk sürümde neyin olmazsa olmaz olduğuna birlikte karar veriyoruz.',
           outcomes: [
             'Sorunun ve hedefin net bir tanımı',
@@ -176,6 +183,7 @@ export const copy: Record<Lang, Copy> = {
         },
         {
           name: 'Çözümü tasarlamak',
+          short: 'Daha kod yazılmadan ekranları görüyor, tıklayıp deniyorsun.',
           body: 'Daha tek satır kod yazılmadan ürünü görüyorsun: hangi ekranlar var, kullanıcı nereye tıklıyor, karşısına ne çıkıyor. Önce kaba çizimler, sonra gerçeğe yakın, tıklayıp gezebileceğin ekranlar. Yanlış bir şey varsa burada, henüz ucuzken düzeltiyoruz.',
           outcomes: [
             'Her ekranın kaba taslağı (wireframe)',
@@ -185,6 +193,7 @@ export const copy: Record<Lang, Copy> = {
         },
         {
           name: 'Ürünü geliştirmek',
+          short: 'Web ya da mobil uygulama, arkasında çalışan her şeyle birlikte.',
           body: 'Tasarlanan ekranları çalışan bir ürüne dönüştürüyorum: kullanıcının gördüğü taraf (web sitesi, panel ya da telefon uygulaması) ve arkada verileri saklayan, hesapları yöneten, diğer sistemlerle konuşan taraf. İkisi de aynı elden çıktığı için parçalar birbirine uyuyor.',
           outcomes: [
             'Web ve mobil uygulama (frontend, mobil)',
@@ -194,6 +203,7 @@ export const copy: Record<Lang, Copy> = {
         },
         {
           name: 'Yayına almak ve yaşatmak',
+          short: 'Ürün kullanıcılarına açılıyor, sorunsuz ve güncel kalıyor.',
           body: 'Ürünü kullanıcılarına açıyorum, iş burada bitmiyor. Yeni sürümler kesinti olmadan çıkıyor, bir şey bozulursa haberim oluyor, verilerin düzenli yedekleniyor. Gerçek kullanıcılardan gelen geri bildirimler, sırada neyi iyileştireceğimizi belirliyor.',
           outcomes: [
             'Yayına alma ve otomatik güncellemeler (CI/CD)',
@@ -203,6 +213,7 @@ export const copy: Record<Lang, Copy> = {
         }
       ],
       outcomeLabel: 'Ortaya çıkan',
+      flowMore: 'Adımların ayrıntısı',
       workTitle: 'Deneyim',
       work: [
         { years: '2026 – şimdi', role: 'Ürün mühendisi', place: 'Serbest' },
