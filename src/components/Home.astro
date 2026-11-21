@@ -36,9 +36,17 @@ const links = [
       <ol class="route mt-8">
         {
           t.route.map((stage) => (
-            <li class="relative pb-7 pl-9 last:pb-0">
+            <li class="relative pb-10 pl-9 last:pb-0">
               <h3 class="stretch-wide font-semibold">{stage.name}</h3>
               <p class="mt-1 text-ink-soft">{stage.body}</p>
+              <p class="stretch-condensed mt-4 text-sm font-medium tracking-[0.06em] uppercase">
+                {t.outcomeLabel}
+              </p>
+              <ul class="outcomes mt-1.5 space-y-1 text-base text-ink-soft">
+                {stage.outcomes.map((item) => (
+                  <li class="relative pl-5">{item}</li>
+                ))}
+              </ul>
             </li>
           ))
         }
@@ -85,7 +93,7 @@ const links = [
 
 <style>
   /* A trail between waypoints, the way a route is drawn on a map. */
-  .route li::before {
+  .route > li::before {
     content: '';
     position: absolute;
     left: 0.4375rem;
@@ -94,11 +102,21 @@ const links = [
     border-left: 2px dashed var(--contour-index);
   }
 
-  .route li:last-child::before {
+  .route > li:last-child::before {
     display: none;
   }
 
-  .route li::after {
+  /* Deliverables hang off each waypoint like ticks on a survey line. */
+  .outcomes li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.8em;
+    width: 0.625rem;
+    border-top: 1px solid var(--contour-index);
+  }
+
+  .route > li::after {
     content: '';
     position: absolute;
     left: 0;
